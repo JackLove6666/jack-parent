@@ -1,0 +1,4 @@
+# Project exclude paths
+/basics/basics-gen/target/
+/common/common-core/target/
+/common/common-swagger/target/

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cloud.jack.gen.mapper.GenColumnSchemaMapper">
+
+    <resultMap id="genColumnSchemaMap" type="com.cloud.jack.gen.entity.GenColumnSchema">
+        <id property="id" column="id"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="tableCat" column="table_cat"/>
+        <result property="tableName" column="table_name"/>
+        <result property="columnName" column="column_name"/>
+        <result property="typeName" column="type_name"/>
+        <result property="nullable" column="nullable"/>
+        <result property="remarks" column="remarks"/>
+        <result property="varName" column="var_name"/>
+        <result property="primaryKey" column="primary_key"/>
+        <result property="isSearch" column="is_search"/>
+        <result property="isExcel" column="is_excel"/>
+        <result property="isList" column="is_list"/>
+        <result property="isEdit" column="is_edit"/>
+    </resultMap>
+</mapper>

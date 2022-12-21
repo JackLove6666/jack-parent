@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/admin/admin.iml" filepath="$PROJECT_DIR$/admin/admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/admin/admin-client/admin-client.iml" filepath="$PROJECT_DIR$/admin/admin-client/admin-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/admin/admin-model/admin-model.iml" filepath="$PROJECT_DIR$/admin/admin-model/admin-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/admin/admin-server/admin-server.iml" filepath="$PROJECT_DIR$/admin/admin-server/admin-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basics/basics.iml" filepath="$PROJECT_DIR$/basics/basics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basics/basics-gen/basics-gen.iml" filepath="$PROJECT_DIR$/basics/basics-gen/basics-gen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basics/basics-oauth/basics-oauth.iml" filepath="$PROJECT_DIR$/basics/basics-oauth/basics-oauth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common-core/common-core.iml" filepath="$PROJECT_DIR$/common/common-core/common-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common-security/common-security.iml" filepath="$PROJECT_DIR$/common/common-security/common-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common-swagger/common-swagger.iml" filepath="$PROJECT_DIR$/common/common-swagger/common-swagger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jack-parent.iml" filepath="$PROJECT_DIR$/jack-parent.iml" />
+    </modules>
+  </component>
+</project>
