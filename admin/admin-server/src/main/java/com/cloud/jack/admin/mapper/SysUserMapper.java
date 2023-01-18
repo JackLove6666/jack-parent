@@ -21,6 +21,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import com.cloud.jack.admin.entity.SysUser;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -29,6 +30,7 @@ import org.apache.ibatis.annotations.Param;
  * @author 捷克梗
  * @date 2022-12-14 16:38:29
  */
+@Mapper
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
 }

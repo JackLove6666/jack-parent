@@ -16,6 +16,7 @@
  */
 package com.cloud.jack.admin.controller;
 
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -23,12 +24,14 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.cloud.jack.admin.entity.SysUser;
 import com.cloud.jack.admin.service.SysUserService;
 import com.cloud.jack.core.R;
+import com.cloud.jack.core.annotation.ApiRateLimiter;
+import com.cloud.jack.core.validate.CommonCheckColumn;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import java.util.Map;
+
 
 
 /**
@@ -53,6 +56,7 @@ public class SysUserController {
    */
   @ApiOperation(value="分页查询")
   @GetMapping("/page")
+  @ApiRateLimiter(confKey = "getSysUserPage", value = "")
   public R getSysUserPage(@ApiParam(name="page",value="分页信息",required=true) Page page,@ApiParam(name="sysUser",value="用户",required=true) SysUser sysUser) {
     return  new R<>(sysUserService.page(page,Wrappers.query(sysUser)));
   }
@@ -77,6 +81,12 @@ public class SysUserController {
   @ApiOperation(value="新增用户") 
   @PostMapping
   public R save(@ApiParam(name="sysUser",value="用户",required=true) @RequestBody SysUser sysUser){
+
+    String checkFieldReturnMsg = CommonCheckColumn.checkFieldReturnMsg(sysUser);
+    //检查字段
+    if(StrUtil.isNotBlank(checkFieldReturnMsg)){
+       return R.fail(checkFieldReturnMsg);
+    }
     return new R<>(sysUserService.save(sysUser));
   }
 

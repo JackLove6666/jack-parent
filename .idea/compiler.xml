@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="common-security" />
         <module name="admin-client" />
+        <module name="jack-app" />
         <module name="basics-oauth" />
         <module name="basics-gen" />
         <module name="admin-server" />
@@ -28,6 +29,7 @@
       <module name="common-core" target="8" />
       <module name="common-security" target="8" />
       <module name="common-swagger" target="8" />
+      <module name="jack-app" target="8" />
       <module name="jack-parent" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -44,6 +46,7 @@
       <module name="common-core" options="-parameters" />
       <module name="common-security" options="-parameters" />
       <module name="common-swagger" options="-parameters" />
+      <module name="jack-app" options="-parameters" />
       <module name="jack-parent" options="-parameters" />
     </option>
   </component>

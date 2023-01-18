@@ -13,6 +13,7 @@
       <module fileurl="file://$PROJECT_DIR$/common/common-core/common-core.iml" filepath="$PROJECT_DIR$/common/common-core/common-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common-security/common-security.iml" filepath="$PROJECT_DIR$/common/common-security/common-security.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common-swagger/common-swagger.iml" filepath="$PROJECT_DIR$/common/common-swagger/common-swagger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jack-app/jack-app.iml" filepath="$PROJECT_DIR$/jack-app/jack-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/jack-parent.iml" filepath="$PROJECT_DIR$/jack-parent.iml" />
     </modules>
   </component>

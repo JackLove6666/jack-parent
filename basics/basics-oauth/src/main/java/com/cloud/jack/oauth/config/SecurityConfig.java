@@ -1,10 +1,12 @@
 package com.cloud.jack.oauth.config;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+@Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
@@ -18,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        super.configure(http);
         http.formLogin().loginPage("/token/login").loginProcessingUrl("/token/from").and().authorizeRequests()
                 .antMatchers("/token/**","/mobile/**","/externalApi/**")
-                .permitAll().anyRequest().authenticated().and().csrf().disable().apply();
+                .permitAll().anyRequest().authenticated().and().csrf().disable();
     }
 
     @Override

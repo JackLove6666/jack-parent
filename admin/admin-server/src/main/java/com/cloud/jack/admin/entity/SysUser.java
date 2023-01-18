@@ -19,6 +19,7 @@ package com.cloud.jack.admin.entity;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.cloud.jack.core.annotation.CheckColumn;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -33,7 +34,7 @@ import java.time.LocalDateTime;
  * 用户表
  *
  * @author 捷克梗
- * @date 2022-12-14 16:38:29
+ * @date 2023-01-17 14:52:26
  */
 @Setter
 @Getter
@@ -55,6 +56,7 @@ private static final long serialVersionUID = 1L;
    * 账号
    */
     @ApiModelProperty(value="账号",example="")
+    @CheckColumn(columnName = "username",required = true)
     private String username;
     /**
    * 
