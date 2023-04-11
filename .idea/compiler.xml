@@ -14,40 +14,46 @@
         <module name="admin-server" />
         <module name="common-swagger" />
         <module name="admin-model" />
+        <module name="WmsStock" />
+        <module name="common-redis" />
         <module name="common-core" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
-      <module name="admin" target="8" />
-      <module name="admin-client" target="8" />
-      <module name="admin-model" target="8" />
-      <module name="admin-server" target="8" />
-      <module name="basics" target="8" />
-      <module name="basics-gen" target="8" />
-      <module name="basics-oauth" target="8" />
-      <module name="common" target="8" />
-      <module name="common-core" target="8" />
-      <module name="common-security" target="8" />
-      <module name="common-swagger" target="8" />
-      <module name="jack-app" target="8" />
+      <module name="admin" target="1.8" />
+      <module name="admin-client" target="1.8" />
+      <module name="admin-model" target="1.8" />
+      <module name="admin-server" target="1.8" />
+      <module name="basics" target="1.8" />
+      <module name="basics-gen" target="1.8" />
+      <module name="basics-oauth" target="1.8" />
+      <module name="common" target="1.8" />
+      <module name="common-core" target="1.8" />
+      <module name="common-redis" target="1.8" />
+      <module name="common-security" target="1.8" />
+      <module name="common-swagger" target="1.8" />
+      <module name="jack-app" target="1.8" />
       <module name="jack-parent" target="1.8" />
+      <module name="WmsStock" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="admin" options="-parameters" />
+      <module name="WmsStock" options="-parameters" />
+      <module name="admin" options="" />
       <module name="admin-client" options="-parameters" />
       <module name="admin-model" options="-parameters" />
       <module name="admin-server" options="-parameters" />
-      <module name="basics" options="-parameters" />
+      <module name="basics" options="" />
       <module name="basics-gen" options="-parameters" />
       <module name="basics-oauth" options="-parameters" />
-      <module name="common" options="-parameters" />
+      <module name="common" options="" />
       <module name="common-core" options="-parameters" />
+      <module name="common-redis" options="-parameters" />
       <module name="common-security" options="-parameters" />
       <module name="common-swagger" options="-parameters" />
       <module name="jack-app" options="-parameters" />
-      <module name="jack-parent" options="-parameters" />
+      <module name="jack-parent" options="" />
     </option>
   </component>
 </project>

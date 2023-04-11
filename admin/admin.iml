@@ -82,6 +82,15 @@
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.ant:ant:1.10.9" level="project" />
     <orderEntry type="library" name="Maven: org.apache.ant:ant-launcher:1.10.9" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: com.sun:tools:1.8.0">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../Program Files/Java/jdk1.8.0_161/jre/../lib/tools.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.75" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:easyexcel:2.2.6" level="project" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi:3.17" level="project" />

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/WmsStock/WmsStock.iml" filepath="$PROJECT_DIR$/WmsStock/WmsStock.iml" />
       <module fileurl="file://$PROJECT_DIR$/admin/admin.iml" filepath="$PROJECT_DIR$/admin/admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/admin/admin-client/admin-client.iml" filepath="$PROJECT_DIR$/admin/admin-client/admin-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/admin/admin-model/admin-model.iml" filepath="$PROJECT_DIR$/admin/admin-model/admin-model.iml" />
@@ -11,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/basics/basics-oauth/basics-oauth.iml" filepath="$PROJECT_DIR$/basics/basics-oauth/basics-oauth.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common-core/common-core.iml" filepath="$PROJECT_DIR$/common/common-core/common-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common-redis/common-redis.iml" filepath="$PROJECT_DIR$/common/common-redis/common-redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common-security/common-security.iml" filepath="$PROJECT_DIR$/common/common-security/common-security.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common-swagger/common-swagger.iml" filepath="$PROJECT_DIR$/common/common-swagger/common-swagger.iml" />
       <module fileurl="file://$PROJECT_DIR$/jack-app/jack-app.iml" filepath="$PROJECT_DIR$/jack-app/jack-app.iml" />

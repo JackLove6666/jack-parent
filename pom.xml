@@ -8,6 +8,7 @@
         <module>basics</module>
         <module>admin</module>
         <module>jack-app</module>
+        <module>WmsStock</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -37,6 +38,8 @@
         <druid.version>1.2.6</druid.version>
         <jsoup.version>1.11.3</jsoup.version>
         <ant.version>1.10.9</ant.version>
+        <oauth2.version>2.3.4.RELEASE</oauth2.version>
+        <security-jwt.version>1.1.1.RELEASE</security-jwt.version>
         <xxl-job.version>2.3.0</xxl-job.version>
         <cglib-nodep.version>3.3.0</cglib-nodep.version>
         <servlet-api.version>2.5</servlet-api.version>
