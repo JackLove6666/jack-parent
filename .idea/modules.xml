@@ -17,6 +17,7 @@
       <module fileurl="file://$PROJECT_DIR$/common/common-swagger/common-swagger.iml" filepath="$PROJECT_DIR$/common/common-swagger/common-swagger.iml" />
       <module fileurl="file://$PROJECT_DIR$/jack-app/jack-app.iml" filepath="$PROJECT_DIR$/jack-app/jack-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/jack-parent.iml" filepath="$PROJECT_DIR$/jack-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jcstress-test.iml" filepath="$PROJECT_DIR$/jcstress-test.iml" />
     </modules>
   </component>
 </project>
