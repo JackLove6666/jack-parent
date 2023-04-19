@@ -13,7 +13,10 @@ public class MyTest {
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < 1000; i++) {
             int param = RandomUtil.randomInt(5);
-            service.submit(() -> MyCacheFour.getResult(obj -> Compute.compute(Integer.parseInt(obj.toString())), param));
+            service.submit(() ->
+                    MyCacheFour.getResult(
+                            obj -> Compute.compute(Integer.parseInt(obj.toString())), param)
+            );
         }
         for (int i = 0; i < 1000; i++) {
             try {
