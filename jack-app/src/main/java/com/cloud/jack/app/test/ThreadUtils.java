@@ -6,6 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.CompletionService;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorCompletionService;
 import java.util.concurrent.ThreadPoolExecutor;
 
 public class ThreadUtils {
@@ -23,10 +26,11 @@ public class ThreadUtils {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
         //写一个并发处理类要求
         // 1.线程池
         ThreadPoolExecutor namedExecutor = ThreadPoolUtil.createNamedExecutor("test", 10);
+
         namedExecutor.execute(new Runnable() {
             @Override
             public void run() {

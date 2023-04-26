@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~
+  ~      Copyright (c) 2018-2035, Apemans All rights reserved.
+  ~
+  ~  Redistribution and use in source and binary forms, with or without
+  ~  modification, are permitted provided that the following conditions are met:
+  ~
+  ~ Redistributions of source code must retain the above copyright notice,
+  ~  this list of conditions and the following disclaimer.
+  ~  Redistributions in binary form must reproduce the above copyright
+  ~  notice, this list of conditions and the following disclaimer in the
+  ~  documentation and/or other materials provided with the distribution.
+  ~  Neither the name of the trob4cloud.com developer nor the names of its
+  ~  contributors may be used to endorse or promote products derived from
+  ~  this software without specific prior written permission.
+  ~  Author: ApemansIT (itsupport@apemans.com)
+  ~
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cloud.jack.app.mapper.BseStoreMapper">
+
+  <resultMap id="bseStoreMap" type="com.cloud.jack.app.entity.business.BseStore">
+                  <id property="storeId" column="store_id"/>
+                        <result property="platformTypeId" column="platform_type_id"/>
+                        <result property="bsePlatformSitId" column="bse_platform_sit_id"/>
+                        <result property="storeAccount" column="store_account"/>
+                        <result property="storeNameEn" column="store_name_en"/>
+                        <result property="storeNameShort" column="store_name_short"/>
+                        <result property="saleGroupId" column="sale_group_id"/>
+                        <result property="sellerId" column="seller_id"/>
+                        <result property="corporationId" column="corporation_id"/>
+                        <result property="corporationSwitch" column="corporation_switch"/>
+                        <result property="storeCompanyName" column="store_company_name"/>
+                        <result property="token" column="token"/>
+                        <result property="state" column="state"/>
+                        <result property="remark" column="remark"/>
+                        <result property="isVatCompliance" column="is_vat_compliance"/>
+                        <result property="isVatTax" column="is_vat_tax"/>
+                        <result property="createBy" column="create_by"/>
+                        <result property="createTime" column="create_time"/>
+                        <result property="updateBy" column="update_by"/>
+                        <result property="updateTime" column="update_time"/>
+                        <result property="delFlag" column="del_flag"/>
+            </resultMap>
+</mapper>

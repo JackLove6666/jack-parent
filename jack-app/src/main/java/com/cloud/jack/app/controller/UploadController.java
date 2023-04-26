@@ -24,7 +24,16 @@ public class UploadController {
             return uploadService.batchImport(files);
     }
 
+    @ApiOperation(value = "单个上传")
+    @PostMapping("/importExcel")
+    public R  importExcel(MultipartFile file) {
+        return uploadService.importExcel(file);
+    }
 
+    @ApiOperation(value = "批量导入")
+    @PostMapping("/importExcel2")
+    public R importExcel2(MultipartFile file) {
 
+    }
 
 }

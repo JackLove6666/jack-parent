@@ -1,14 +1,14 @@
 package com.cloud.jack.app.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
+import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.cloud.jack.app.config.CommonProperties;
 import com.cloud.jack.app.core.R;
 import com.cloud.jack.app.core.TrobDeniedException;
-import com.cloud.jack.app.entity.AttachEntity;
-import com.cloud.jack.app.entity.SourceBillType;
-import com.cloud.jack.app.entity.SourceMq;
-import com.cloud.jack.app.entity.SourceUploadReportManage;
+import com.cloud.jack.app.entity.*;
 import com.cloud.jack.app.enums.UploadStatusEnum;
 import com.cloud.jack.app.rabbit.RabbitSender;
 import com.cloud.jack.app.service.*;
@@ -16,9 +16,13 @@ import com.cloud.jack.app.utils.FileUtil;
 import com.cloud.jack.app.utils.RedissonLocker;
 import com.cloud.jack.app.utils.RegexUtils;
 import com.cloud.jack.app.utils.ThreadPoolUtil;
+import com.cloud.jack.app.utils.excel.DownloadUtil;
+import com.cloud.jack.app.utils.excel.MyPageReadListener;
+import com.cloud.jack.app.utils.excel.ParserHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -55,6 +59,9 @@ public class UploadServiceImpl implements UploadService {
 
     @Autowired
     private SysAttachTService sysAttachTService;
+
+    @Autowired
+    private AmzOrderAllService amzOrderAllService;
 
     @Override
     public R batchImport(List<MultipartFile> files) {
@@ -190,5 +197,49 @@ public class UploadServiceImpl implements UploadService {
         }
 
         return attachEntity;
+    }
+
+    /**
+     * 导入 txt文件
+     * @param file
+     * @return
+     */
+    @Override
+    @Transactional
+    public R importExcel(MultipartFile file) {
+        if(file == null){
+            throw new RuntimeException("未上传任何文件");
+        }
+        try {
+            List<JSONObject> jsonObjects = null;
+            String originalFilename = file.getOriginalFilename();
+            if(originalFilename.endsWith(".txt")){
+                 jsonObjects = ParserHelper.parseAndCheckByTxt(file.getInputStream());
+            } else if (originalFilename.endsWith(".xls") || originalFilename.endsWith(".xlsx")){
+               jsonObjects = new ArrayList<>();
+            }else if(originalFilename.endsWith(".csv")){
+                jsonObjects = ParserHelper.parseAndCheckByCsv(file.getInputStream(), AmzOrderAll.class);
+            }
+            List<AmzOrderAll> amzOrderAllList = JSONObject.parseArray(JSON.toJSONString(jsonObjects), AmzOrderAll.class);
+            amzOrderAllList.stream().forEach(item -> {
+              item.setStoreId(1);
+            });
+            amzOrderAllService.saveBatch(amzOrderAllList);
+            Iterator<AmzOrderAll> iterator = amzOrderAllList.iterator();
+            while (iterator.hasNext()){
+                AmzOrderAll next = iterator.next();
+                log.info("{}",next);
+            }
+        } catch (IOException e) {
+            log.error("导入失败[{}]",e);
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    @Override
+    public R importExcel2(MultipartFile file) {
+
+        return null;
     }
 }

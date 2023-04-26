@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~
+  ~      Copyright (c) 2018-2035, Apemans All rights reserved.
+  ~
+  ~  Redistribution and use in source and binary forms, with or without
+  ~  modification, are permitted provided that the following conditions are met:
+  ~
+  ~ Redistributions of source code must retain the above copyright notice,
+  ~  this list of conditions and the following disclaimer.
+  ~  Redistributions in binary form must reproduce the above copyright
+  ~  notice, this list of conditions and the following disclaimer in the
+  ~  documentation and/or other materials provided with the distribution.
+  ~  Neither the name of the trob4cloud.com developer nor the names of its
+  ~  contributors may be used to endorse or promote products derived from
+  ~  this software without specific prior written permission.
+  ~  Author: ApemansIT (itsupport@apemans.com)
+  ~
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cloud.jack.app.mapper.PrdSkuMapper">
+
+  <resultMap id="prdSkuMap" type="com.cloud.jack.app.entity.business.PrdSku">
+                  <id property="skuId" column="sku_id"/>
+                        <result property="skuCode" column="sku_code"/>
+                        <result property="skuName" column="sku_name"/>
+                        <result property="skuAttributes" column="sku_attributes"/>
+                        <result property="purchaseCycle" column="purchase_cycle"/>
+                        <result property="specification" column="specification"/>
+                        <result property="funcRequire" column="func_require"/>
+                        <result property="approveRequire" column="approve_require"/>
+                        <result property="packList" column="pack_list"/>
+                        <result property="otherDescribe" column="other_describe"/>
+                        <result property="spuId" column="spu_id"/>
+                        <result property="invoiceId" column="invoice_id"/>
+                        <result property="platformTypeId" column="platform_type_id"/>
+                        <result property="status" column="status"/>
+                        <result property="version" column="version"/>
+                        <result property="createBy" column="create_by"/>
+                        <result property="createTime" column="create_time"/>
+                        <result property="updateBy" column="update_by"/>
+                        <result property="updateTime" column="update_time"/>
+                        <result property="delFlag" column="del_flag"/>
+                        <result property="finishAuditTime" column="finish_audit_time"/>
+            </resultMap>
+</mapper>

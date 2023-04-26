@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~
+  ~      Copyright (c) 2018-2035, Apemans All rights reserved.
+  ~
+  ~  Redistribution and use in source and binary forms, with or without
+  ~  modification, are permitted provided that the following conditions are met:
+  ~
+  ~ Redistributions of source code must retain the above copyright notice,
+  ~  this list of conditions and the following disclaimer.
+  ~  Redistributions in binary form must reproduce the above copyright
+  ~  notice, this list of conditions and the following disclaimer in the
+  ~  documentation and/or other materials provided with the distribution.
+  ~  Neither the name of the trob4cloud.com developer nor the names of its
+  ~  contributors may be used to endorse or promote products derived from
+  ~  this software without specific prior written permission.
+  ~  Author: ApemansIT (itsupport@apemans.com)
+  ~
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cloud.jack.app.mapper.AmzOrderAllMapper">
+
+  <resultMap id="amzOrderAllMap" type="com.cloud.jack.app.entity.AmzOrderAll">
+                  <id property="id" column="id"/>
+                        <result property="amazonOrderId" column="amazon_order_id"/>
+                        <result property="merchantOrderId" column="merchant_order_id"/>
+                        <result property="purchaseDate" column="purchase_date"/>
+                        <result property="lastUpdatedDate" column="last_updated_date"/>
+                        <result property="orderStatus" column="order_status"/>
+                        <result property="fulfillmentChannel" column="fulfillment_channel"/>
+                        <result property="salesChannel" column="sales_channel"/>
+                        <result property="orderChannel" column="order_channel"/>
+                        <result property="url" column="url"/>
+                        <result property="shipServiceLevel" column="ship_service_level"/>
+                        <result property="productName" column="product_name"/>
+                        <result property="sku" column="sku"/>
+                        <result property="asin" column="asin"/>
+                        <result property="itemStatus" column="item_status"/>
+                        <result property="quantity" column="quantity"/>
+                        <result property="currency" column="currency"/>
+                        <result property="itemPrice" column="item_price"/>
+                        <result property="itemTax" column="item_tax"/>
+                        <result property="shippingPrice" column="shipping_price"/>
+                        <result property="shippingTax" column="shipping_tax"/>
+                        <result property="giftWrapPrice" column="gift_wrap_price"/>
+                        <result property="giftWrapTax" column="gift_wrap_tax"/>
+                        <result property="itemPromotionDiscount" column="item_promotion_discount"/>
+                        <result property="shipPromotionDiscount" column="ship_promotion_discount"/>
+                        <result property="shipCity" column="ship_city"/>
+                        <result property="shipState" column="ship_state"/>
+                        <result property="shipPostalCode" column="ship_postal_code"/>
+                        <result property="shipCountry" column="ship_country"/>
+                        <result property="promotionIds" column="promotion_ids"/>
+                        <result property="isBusinessOrder" column="is_business_order"/>
+                        <result property="purchaseOrderNumber" column="purchase_order_number"/>
+                        <result property="priceDesignation" column="price_designation"/>
+                        <result property="storeId" column="store_id"/>
+                        <result property="pushStatus" column="push_status"/>
+                        <result property="pushDescribe" column="push_describe"/>
+                        <result property="createBy" column="create_by"/>
+                        <result property="createTime" column="create_time"/>
+                        <result property="updateBy" column="update_by"/>
+                        <result property="updateTime" column="update_time"/>
+                        <result property="delFlag" column="del_flag"/>
+            </resultMap>
+</mapper>

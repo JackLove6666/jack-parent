@@ -1,5 +1,7 @@
 package com.cloud.jack.app.test.collection;
 
+import java.util.HashMap;
+
 public class HashMapDemo {
 
         static class Node{
@@ -50,6 +52,15 @@ public class HashMapDemo {
             this.threshold = tableSizeFor(initialCapacity);
         }
 
+        public int hash(String key) {
+            int h;
+            return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+        }
+
+        public int hashCode(String key){
+            return  key.hashCode();
+        }
+
         static final int tableSizeFor(int cap) {
             int n = cap - 1;
             n |= n >>> 1;
@@ -61,10 +72,39 @@ public class HashMapDemo {
         }
 
         public static void main(String[] args) {
+            for (int i = 0; i < 3; i++) {
+                System.out.println(i);
+                if(i == 0)
+                break;
+                System.out.println("会执行吗？");
+            }
             HashMapDemo hashMapDemo = new HashMapDemo();
+
+            int hash = hashMapDemo.hash("捷克梗");
+            int hashCode = hashMapDemo.hashCode("捷克梗");
+            System.out.println(hash);
+            System.out.println(hashCode);
             hashMapDemo.put(new Node());
             hashMapDemo.put(new Node());
-            System.out.println(hashMapDemo.get(1));
+//            System.out.println(hashMapDemo.get(1));
+            HashMap hashMap = new HashMap();
+            Object put = hashMap.put("1", "1");
+            Object putIfAbsent = hashMap.putIfAbsent("1", "2");
+            System.out.println(put);
+            System.out.println(putIfAbsent);
+            //体验一下HashMap的右移运算
+            int i = 16;
+            System.out.println(i >>> 1);
+            System.out.println(i >>> 2);
+            //扰动函数的作用是为了让高位的hash值参与运算，减少碰撞,为什么要异或运算呢？
+            //异或运算的特点是：相同为0，不同为1，所以相同的hash值经过异或运算后，高位的hash值参与运算，减少碰撞
+            //为什么要右移运算呢？
+            //右移运算的特点是：低位溢出，高位补0，所以高位的hash值参与运算，减少碰撞
+            //为什么要这样做呢？
+            //因为HashMap的数组长度是2的幂次方，所以hash值与数组长度-1做与运算，可以保证hash值落在数组的范围内
+
+            System.out.println(hashCode ^ (hashCode >>> 16));
+
         }
 
 

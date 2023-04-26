@@ -29,5 +29,6 @@ public class AccountUnsafeTest {
         long end = System.nanoTime();
         // 余额不为0，说明有线程安全问题
         log.info("余额：{}，花费时间：{}", account.getBalance(), (end - start) / 1000_000+"ms");
+
     }
 }
