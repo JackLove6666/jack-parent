@@ -24,7 +24,6 @@ spring:
     host: 81.71.119.229
     port: 6379
     username: root
-    database: 5
   servlet:
     multipart:
       max-file-size: 1000MB

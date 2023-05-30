@@ -1,4 +1,4 @@
-package com.cloud.jack.app.utils.excel;
+package com.cloud.jack.app.excel;
 
 import com.alibaba.excel.support.ExcelTypeEnum;
 

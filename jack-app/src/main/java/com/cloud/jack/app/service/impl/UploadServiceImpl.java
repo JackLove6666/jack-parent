@@ -2,24 +2,31 @@ package com.cloud.jack.app.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import com.alibaba.excel.EasyExcel;
-import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.cloud.jack.app.config.CommonProperties;
 import com.cloud.jack.app.core.R;
 import com.cloud.jack.app.core.TrobDeniedException;
 import com.cloud.jack.app.entity.*;
+import com.cloud.jack.app.entity.business.WmsFbaReturn;
+import com.cloud.jack.app.entity.business.WmsFbaReturnDetail;
+import com.cloud.jack.app.entity.vo.fbaReturn.WmsFbaReturnImportCheckVo;
+import com.cloud.jack.app.entity.vo.fbaReturn.WmsFbaReturnImportExcelVo;
 import com.cloud.jack.app.enums.UploadStatusEnum;
+import com.cloud.jack.app.excel.listener.FbaReturnImportListener;
+import com.cloud.jack.app.mapper.DemoOrderImportCheckMapper;
+import com.cloud.jack.app.mapper.WmsFbaReturnDetailMapper;
+import com.cloud.jack.app.mapper.WmsFbaReturnMapper;
 import com.cloud.jack.app.rabbit.RabbitSender;
 import com.cloud.jack.app.service.*;
+import com.cloud.jack.app.utils.CreateNoUtils;
 import com.cloud.jack.app.utils.FileUtil;
 import com.cloud.jack.app.utils.RedissonLocker;
-import com.cloud.jack.app.utils.RegexUtils;
 import com.cloud.jack.app.utils.ThreadPoolUtil;
-import com.cloud.jack.app.utils.excel.DownloadUtil;
-import com.cloud.jack.app.utils.excel.MyPageReadListener;
-import com.cloud.jack.app.utils.excel.ParserHelper;
+import com.cloud.jack.app.excel.ParserHelper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -62,6 +69,15 @@ public class UploadServiceImpl implements UploadService {
 
     @Autowired
     private AmzOrderAllService amzOrderAllService;
+
+    @Autowired
+    private DemoOrderImportCheckMapper demoOrderImportCheckMapper;
+
+    @Autowired
+    private WmsFbaReturnMapper wmsFbaReturnMapper;
+
+    @Autowired
+    private WmsFbaReturnDetailMapper wmsFbaReturnDetailMapper;
 
     @Override
     public R batchImport(List<MultipartFile> files) {
@@ -239,7 +255,70 @@ public class UploadServiceImpl implements UploadService {
 
     @Override
     public R importExcel2(MultipartFile file) {
+        if(file == null){
+            throw new RuntimeException("未上传任何文件");
+        }
 
-        return null;
+        //平台站点
+        List<Map<String, Object>> platformSitInfo = demoOrderImportCheckMapper.selectPlatformSitInfo();
+        Map<Pair<String, String>, Integer> bsePlatformSitMap = platformSitInfo.stream().collect(Collectors.toMap(key -> Pair.of(key.get("platform_type_code").toString(), key.get("sit_name").toString()), value -> Integer.parseInt(value.get("bse_platform_sit_id").toString()), (key1, key2) -> key1));
+        //店铺
+        List<Map<String, Object>> allStoreInfo = demoOrderImportCheckMapper.selectAllStore();
+        Map<Pair<Integer,String>, Integer> storeMap = allStoreInfo.stream().collect(Collectors.toMap(key -> Pair.of(Integer.parseInt(key.get("bse_platform_sit_id").toString()),key.get("store_account").toString()), value -> Integer.parseInt(value.get("store_id").toString()), (key1, key2) -> key1));
+        //平台sku
+        List<Map<String, Object>> allPlatFormSkuInfo = demoOrderImportCheckMapper.selectAllPlatFormSkuInfo();
+        Map<String, Integer> platformSkuMap = allPlatFormSkuInfo.stream().collect(Collectors.toMap(key -> String.format("%s-%s-%s", key.get("platform_sku_code"), key.get("store_id"), key.get("bse_platform_sit_id")),
+                value -> Integer.parseInt(value.get("bse_platform_sku_id").toString()), (key1, key2) -> key1));
+        // 读取excel数据并检查数据
+        List<WmsFbaReturnImportExcelVo> list = new ArrayList();
+        List<String> errorMsg = new ArrayList<>();
+        WmsFbaReturnImportCheckVo wmsFbaReturnImportCheckVo = new WmsFbaReturnImportCheckVo();
+        wmsFbaReturnImportCheckVo.setBsePlatformSitMap(bsePlatformSitMap);
+        wmsFbaReturnImportCheckVo.setStoreMap(storeMap);
+        wmsFbaReturnImportCheckVo.setPlatformSkuMap(platformSkuMap);
+        try {
+            EasyExcel.read(file.getInputStream(), WmsFbaReturnImportExcelVo.class, new FbaReturnImportListener(list,wmsFbaReturnImportCheckVo,errorMsg)).sheet().doRead();
+        } catch (IOException e) {
+            log.error("导入失败[{}]",e);
+            throw new RuntimeException(e);
+        }
+        if(CollectionUtils.isNotEmpty(errorMsg)){
+            return R.fail(errorMsg.toString());
+        }
+        // 搜集插入数据
+        List<WmsFbaReturn> wmsFbaReturnList = new ArrayList<>();
+        List<WmsFbaReturnDetail> wmsFbaReturnDetailList = new ArrayList<>();
+        for (WmsFbaReturnImportExcelVo wmsFbaReturnImportExcelVo : list) {
+            WmsFbaReturn wmsFbaReturn = new WmsFbaReturn();
+            wmsFbaReturn.setReturnOrderNo(getReturnFbaOrderNo());
+            wmsFbaReturn.setSaleStatus(Integer.parseInt(wmsFbaReturnImportExcelVo.getSaleStatus()));
+            wmsFbaReturn.setRemark(wmsFbaReturnImportExcelVo.getRemark());
+            wmsFbaReturnList.add(wmsFbaReturn);
+            WmsFbaReturnDetail wmsFbaReturnDetail = new WmsFbaReturnDetail();
+            wmsFbaReturnDetail.setBsePlatformSkuId(wmsFbaReturnImportExcelVo.getBsePlatformSkuId());
+            wmsFbaReturnDetail.setReturnQuantity(Integer.parseInt(wmsFbaReturnImportExcelVo.getReturnQuantity()));
+            wmsFbaReturnDetail.setReturnOrderNo(wmsFbaReturn.getReturnOrderNo());
+            wmsFbaReturnDetailList.add(wmsFbaReturnDetail);
+        }
+        // 插入数据
+        for (WmsFbaReturn wmsFbaReturn : wmsFbaReturnList) {
+            wmsFbaReturnMapper.insert(wmsFbaReturn);
+        }
+        for (WmsFbaReturnDetail wmsFbaReturnDetail : wmsFbaReturnDetailList) {
+            wmsFbaReturnDetailMapper.insert(wmsFbaReturnDetail);
+        }
+        return R.ok("导入成功");
     }
+
+
+        /**
+         * 获取退货单号
+         *
+         * @return
+         */
+        private String getReturnFbaOrderNo() {
+//            return createNoUtils.createNo(() -> baseMapper.selectMaxNo(), "FBA_RETURN_APPLY_NO", "FT");
+            return CreateNoUtils.createNo("FT",wmsFbaReturnMapper.selectMaxNo());
+        }
+
 }

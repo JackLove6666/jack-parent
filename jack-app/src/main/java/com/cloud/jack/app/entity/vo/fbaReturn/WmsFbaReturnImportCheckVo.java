@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) 2018-2035, Apemans All rights reserved.
+ *    Copyright (c) 2018-2025, Aukey All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -12,26 +12,24 @@
  * Neither the name of the trob4cloud.com developer nor the names of its
  * contributors may be used to endorse or promote products derived from
  * this software without specific prior written permission.
- * Author: ApemansIT (itsupport@apemans.com)
+ * Author: wangbin (AukeyIT@aukeys.com)
  */
-package com.cloud.jack.app.mapper;
+package com.cloud.jack.app.entity.vo.fbaReturn;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cloud.jack.app.entity.business.BsePlatformSit;
-import org.apache.ibatis.annotations.Param;
+import lombok.Data;
+import org.apache.commons.lang3.tuple.Pair;
+
+import java.util.Map;
 
 /**
- * 平台站点表
- *
- * @author trobs code generator
- * @date 2023-04-26 15:35:37
+ * fba退货导入
  */
-public interface BsePlatformSitMapper extends BaseMapper<BsePlatformSit> {
-
-
-
-
-
+@Data
+public class WmsFbaReturnImportCheckVo {
+    private Map<String, Integer> sysGroupMap;
+    private Map<Pair<String, String>, Integer> bsePlatformSitMap;
+    private Map<Pair<Integer, String>, Integer> storeMap;
+    private Map<String, Integer> bseTransportModesMap;
+    private Map<String, Integer> wmsBusinessTypeMap;
+    private Map<String, Integer> platformSkuMap;
 }

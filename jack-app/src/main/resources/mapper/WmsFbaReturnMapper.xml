@@ -21,20 +21,20 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.cloud.jack.app.mapper.BsePlatformSitMapper">
+<mapper namespace="com.cloud.jack.app.mapper.WmsFbaReturnMapper">
 
-  <resultMap id="bsePlatformSitMap" type="com.cloud.jack.app.entity.business.BsePlatformSit">
-                  <id property="bsePlatformSitId" column="bse_platform_sit_id"/>
-                        <result property="sitType" column="sit_type"/>
-                        <result property="sitName" column="sit_name"/>
-                        <result property="sitUrl" column="sit_url"/>
-                        <result property="sitUrlShort" column="sit_url_short"/>
-                        <result property="countryId" column="country_id"/>
-                        <result property="districtId" column="district_id"/>
-                        <result property="marketplaceId" column="marketplace_id"/>
-                        <result property="awsAccessKeyId" column="aws_access_key_id"/>
-                        <result property="secretKey" column="secret_key"/>
-                        <result property="remarks" column="remarks"/>
+  <resultMap id="wmsFbaReturnMap" type="com.cloud.jack.app.entity.business.WmsFbaReturn">
+                  <id property="returnOrderNo" column="return_order_no"/>
+                        <result property="warehouseId" column="warehouse_id"/>
+                        <result property="transportModeId" column="transport_mode_id"/>
+                        <result property="fbaRemoveNo" column="fba_remove_no"/>
+                        <result property="handleMode" column="handle_mode"/>
+                        <result property="salesGroupId" column="sales_group_id"/>
+                        <result property="returnReason" column="return_reason"/>
+                        <result property="saleStatus" column="sale_status"/>
+                        <result property="status" column="status"/>
+                        <result property="remark" column="remark"/>
+                        <result property="orderId" column="order_id"/>
                         <result property="createBy" column="create_by"/>
                         <result property="createTime" column="create_time"/>
                         <result property="updateBy" column="update_by"/>
@@ -42,5 +42,8 @@
                         <result property="delFlag" column="del_flag"/>
             </resultMap>
 
-
+      <select id="selectMaxNo" resultType="java.lang.String">
+           select max(return_order_no) return_order_no from wms_fba_return
+            where return_order_no like concat('FT',DATE_FORMAT(NOW(),'%y%m%d'),'%');
+      </select>
 </mapper>

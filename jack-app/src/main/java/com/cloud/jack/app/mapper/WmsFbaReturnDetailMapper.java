@@ -19,19 +19,15 @@ package com.cloud.jack.app.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cloud.jack.app.entity.business.BsePlatformSit;
+import com.cloud.jack.app.entity.business.WmsFbaReturnDetail;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * 平台站点表
+ * fba退货明细表
  *
- * @author trobs code generator
- * @date 2023-04-26 15:35:37
+ * @author 捷克梗
+ * @date 2023-05-09 16:15:19
  */
-public interface BsePlatformSitMapper extends BaseMapper<BsePlatformSit> {
-
-
-
-
+public interface WmsFbaReturnDetailMapper extends BaseMapper<WmsFbaReturnDetail> {
 
 }

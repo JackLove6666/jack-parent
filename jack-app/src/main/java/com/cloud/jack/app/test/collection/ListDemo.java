@@ -1,9 +1,11 @@
 package com.cloud.jack.app.test.collection;
 
+import cn.hutool.core.lang.Assert;
 import com.cloud.jack.app.entity.wx.User;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -18,6 +20,15 @@ public class ListDemo {
 
 
     public static void main(String[] args) {
+
+        Object notNull = Assert.notNull("null", "参数不能为空");
+        System.out.println(notNull);
+
+        List<Integer> asList = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+        List<Integer>  groupList = new ArrayList<>();
+        groupList.add(5);
+        asList.addAll(groupList);
+        System.out.println(asList);
         //创建一个list集合
         List<String> list = new ArrayList<>();
         if(list.size() == 0){

@@ -33,7 +33,7 @@ public class UploadController {
     @ApiOperation(value = "批量导入")
     @PostMapping("/importExcel2")
     public R importExcel2(MultipartFile file) {
-
+        return uploadService.importExcel2(file);
     }
 
 }

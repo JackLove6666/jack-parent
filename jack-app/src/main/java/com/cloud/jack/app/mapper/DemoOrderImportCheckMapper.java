@@ -17,19 +17,26 @@
 package com.cloud.jack.app.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.cloud.jack.app.entity.business.BsePlatformSit;
-import org.apache.ibatis.annotations.Param;
+import com.cloud.jack.app.entity.AmzOrderAll;
+
+import java.util.List;
+import java.util.Map;
 
 /**
- * 平台站点表
+ * 订单导入校验
  *
  * @author trobs code generator
- * @date 2023-04-26 15:35:37
+ * @date 2023-04-26 14:22:35
  */
-public interface BsePlatformSitMapper extends BaseMapper<BsePlatformSit> {
+public interface DemoOrderImportCheckMapper  {
 
+
+    List<Map<String,Object>> selectPlatformSitInfo();
+
+
+    List<Map<String,Object>> selectAllStore();
+
+    List<Map<String,Object>> selectAllPlatFormSkuInfo();
 
 
 

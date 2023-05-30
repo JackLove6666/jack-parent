@@ -1,11 +1,8 @@
-package com.cloud.jack.app.utils.excel;
+package com.cloud.jack.app.excel;
 
 import cn.hutool.core.text.csv.CsvReader;
-import cn.hutool.core.text.csv.CsvUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSONObject;
-import com.cloud.jack.app.entity.AmzOrderAll;
-import com.cloud.jack.app.entity.RemoveOrderData;
 
 import java.io.*;
 import java.util.ArrayList;
