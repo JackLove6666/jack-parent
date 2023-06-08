@@ -22,26 +22,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
-public class RabbitConfig  implements InitializingBean,BeanPostProcessor, BeanNameAware {
-    @Override
-    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        if (bean instanceof CommonProperties) {
-            //这条语句是最先打印的 1  DataSourceProperty 此时它的两个属性是已经被赋值了的
-            System.out.println("dataSourceProperty 初始化前执行 dataSourceProperty" );
-        }
-        System.out.println(beanName +":"+ bean);
-        return bean;
-    }
-
-    @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        if (bean instanceof CommonProperties) {
-            //这条语句是最后打印的
-            System.out.println("dataSourceProperty 初始后执行" );
-        }
-        return bean;
-    }
-
+public class RabbitConfig  {
     /**
      * 主机host
      */
@@ -95,15 +76,5 @@ public class RabbitConfig  implements InitializingBean,BeanPostProcessor, BeanNa
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
 
         return rabbitTemplate;
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("aaaaa"+redisTemplate);
-    }
-
-    @Override
-    public void setBeanName(String s) {
-        System.out.println("beanName"+s);
     }
 }

@@ -49,7 +49,7 @@ public class AckConsumer {
             System.out.println("AckConsumer--->接受到的消息是：" + msg);
 
             // 业务处理
-            int i = 10 / 0;
+//            int i = 10 / 0;
 
             // 手动ack确认   //TODO
             //参数1：deliveryTag:消息唯一传输ID

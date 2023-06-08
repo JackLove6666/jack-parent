@@ -9,6 +9,7 @@
         <module>admin</module>
         <module>jack-app</module>
         <module>WmsStock</module>
+        <module>jcstress-test</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -31,7 +32,7 @@
         <commons-collections4.version>4.4</commons-collections4.version>
         <ant.version>1.10.9</ant.version>
         <fastjson.version>1.2.75</fastjson.version>
-        <easyexcel.version>2.2.6</easyexcel.version>
+        <easyexcel.version>2.2.7</easyexcel.version>
         <druid-spring.vison>1.2.2</druid-spring.vison>
         <mysql.version>8.0.13</mysql.version>
         <mybatis.plus.version>3.5.1</mybatis.plus.version>

@@ -82,6 +82,41 @@ weiXin:
 app:
   common:
     hostPath: D:\app\uploadFile\
+
+# 发布与订阅模式
+fanout:
+  # 交换机
+  exchange: fanout-exchange
+  # 队列名称
+  sms:
+    queue: fanout-sms-queue
+  weixin:
+    queue: fanout-weixin-queue
+
+# 路由模式
+direct:
+  # 交换机
+  exchange: direct-exchange
+  # 队列名称
+  info:
+    queue: direct-info-queue
+  error:
+    queue: direct-error-queue
+  all:
+    queue: direct-all-queue
+
+# 主题模式
+topic:
+  # 交换机
+  exchange: topic-exchange
+  # 配置队列名称
+  info:
+    queue: topic-info-queue
+  error:
+    queue: topic-error-queue
+  full:
+    queue: topic-full-queue
+
 # 主题模式下的ack确认+死信队列
 topicAck:
   # 交换机

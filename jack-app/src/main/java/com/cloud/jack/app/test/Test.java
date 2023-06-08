@@ -3,13 +3,21 @@ package com.cloud.jack.app.test;
 import cn.hutool.core.collection.CollUtil;
 import org.redisson.RedissonLock;
 
+import javax.sound.midi.Soundbank;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Test {
 
 
     public static void main(String[] args) {
+
+        BigDecimal price = new BigDecimal(3);
+        Optional<BigDecimal> price1 = Optional.ofNullable(price);
+
+        System.out.println(Optional.ofNullable(price).orElse(new BigDecimal(2)).multiply(new BigDecimal(5)));
 
             //写一个流量请求访问限制
         List<Integer> a = new ArrayList<>();
