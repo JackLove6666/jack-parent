@@ -61,6 +61,7 @@ public class ParserHelper {
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             CsvReader csvReader = new CsvReader();
             List list = csvReader.read(bufferedReader, clazz);
+            System.out.println("list"+list);
             List<JSONObject> result = new ArrayList<>();
             return result;
         } catch (UnsupportedEncodingException e) {

@@ -1,6 +1,6 @@
 package com.cloud.jack.app.service;
 
-import com.cloud.jack.app.core.R;
+import com.cloud.jack.app.common.R;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;

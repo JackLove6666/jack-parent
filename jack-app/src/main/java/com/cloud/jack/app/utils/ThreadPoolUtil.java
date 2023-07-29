@@ -1,6 +1,5 @@
 package com.cloud.jack.app.utils;
 
-import com.cloud.jack.app.core.R;
 import com.cloud.jack.app.entity.AttachEntity;
 
 import java.util.concurrent.*;

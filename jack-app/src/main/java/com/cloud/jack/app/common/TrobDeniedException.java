@@ -17,7 +17,7 @@
  *
  */
 
-package com.cloud.jack.app.core;
+package com.cloud.jack.app.common;
 
 import lombok.NoArgsConstructor;
 

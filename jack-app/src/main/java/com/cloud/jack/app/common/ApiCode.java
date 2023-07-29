@@ -1,4 +1,4 @@
-package com.cloud.jack.app.core;
+package com.cloud.jack.app.common;
 
 /**
  * API常量

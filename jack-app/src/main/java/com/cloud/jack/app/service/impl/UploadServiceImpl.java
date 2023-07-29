@@ -6,8 +6,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.cloud.jack.app.config.CommonProperties;
-import com.cloud.jack.app.core.R;
-import com.cloud.jack.app.core.TrobDeniedException;
+import com.cloud.jack.app.common.R;
+import com.cloud.jack.app.common.TrobDeniedException;
 import com.cloud.jack.app.entity.*;
 import com.cloud.jack.app.entity.business.WmsFbaReturn;
 import com.cloud.jack.app.entity.business.WmsFbaReturnDetail;
@@ -234,7 +234,7 @@ public class UploadServiceImpl implements UploadService {
             } else if (originalFilename.endsWith(".xls") || originalFilename.endsWith(".xlsx")){
                jsonObjects = new ArrayList<>();
             }else if(originalFilename.endsWith(".csv")){
-                jsonObjects = ParserHelper.parseAndCheckByCsv(file.getInputStream(), AmzOrderAll.class);
+                jsonObjects = ParserHelper.parseAndCheckByTxt(file.getInputStream());
             }
             List<AmzOrderAll> amzOrderAllList = JSONObject.parseArray(JSON.toJSONString(jsonObjects), AmzOrderAll.class);
             amzOrderAllList.stream().forEach(item -> {

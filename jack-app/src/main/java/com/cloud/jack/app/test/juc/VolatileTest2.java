@@ -1,6 +1,6 @@
 package com.cloud.jack.app.test.juc;
 
-import com.cloud.jack.app.core.R;
+import com.cloud.jack.app.common.R;
 
 public class VolatileTest2 {
 

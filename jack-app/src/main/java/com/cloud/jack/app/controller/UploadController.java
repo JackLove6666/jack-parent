@@ -1,6 +1,6 @@
 package com.cloud.jack.app.controller;
 
-import com.cloud.jack.app.core.R;
+import com.cloud.jack.app.common.R;
 import com.cloud.jack.app.service.UploadService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

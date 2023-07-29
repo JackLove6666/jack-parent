@@ -106,4 +106,7 @@ public interface CommonConstant {
      * 启用
      */
     String ENABLE = "0";
+
+
+    String RESOURCE_PREFIX = "/profile";
 }
